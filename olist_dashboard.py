@@ -237,11 +237,7 @@ with col2:
     st.markdown(f"Most Common Review Score: **{most_common_review_score}**")
 
 fig, ax = plt.subplots(figsize=(12, 6))
-sns.barplot(x=review_score.index,
-            y=review_score.values,
-            order=review_score.index,
-            palette=["#068DA9" if score == common_score else "#D3D3D3" for score in review_score.index]
-            )
+sns.barplot(x=review_score.index, hue=review_score.index, palette='YlGnBu', legend=False)
 
 plt.title("Rating by customers for service", fontsize=15)
 plt.xlabel("Rating")
@@ -297,7 +293,7 @@ with tab3:
 st.subheader("RFM Cluster Segmentation")
 
 fig, ax = plt.subplots(figsize=(15,10))
-sns.countplot(data=rfm, x='customer_segment',palette='YlGnBu')
+sns.countplot(data=rfm, x='customer_segment', hue='customer_segment', palette='YlGnBu', legend=False)
 plt.xlabel('RFM Segments',size=15)
 plt.title('Jumlah Customer Berdasarkan RFM Segmentasi',size=20)
 st.pyplot(fig)
